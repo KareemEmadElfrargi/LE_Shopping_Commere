@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">ECommerceI</string>
+    <string name="app_name" translatable="false">ECommerceI</string>
+    <string name="rightAddress">The Right Address &#10;For Shopping &#10;Anyday</string>
+    <string name="quality">its a new very easy to reach the&#10;best quality among the&#09;products on the internet</string>
+    <string name="start">Start</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="let_s_log_in">Let\'s Log In</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="forgotpassword">ForgotPassword</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="let_s_register">Let\'s Register</string>
+    <string name="faramawy">Faramawy.</string>
+    <string name="first_name">First Name\t</string>
+    <string name="last_name">Last Name</string>
 </resources>
