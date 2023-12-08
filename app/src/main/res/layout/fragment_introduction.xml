@@ -15,6 +15,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineEllipseLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEllipseRight"
+        app:layout_constraintTop_toTopOf="@id/ellipse"
+        app:layout_constraintBottom_toBottomOf="@id/ellipse"
+        app:lottie_rawRes="@raw/intro"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
     <ImageView
         android:id="@+id/ellipse"
         android:layout_width="0dp"
@@ -44,7 +56,8 @@
         android:gravity="center"
         />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/buttonStartIntro"
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/smallButtonHeight"
         style="@style/blueButtonStyle"
@@ -52,6 +65,7 @@
         app:layout_constraintStart_toStartOf="@id/tvQualityForShopping"
         app:layout_constraintEnd_toEndOf="@id/tvQualityForShopping"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:spinning_bar_color="@color/white"
         android:text="@string/start"/>
 
 
@@ -105,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19" />
+        app:layout_constraintGuide_begin="139dp" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineEllipseBottom"
         android:layout_width="wrap_content"

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.ecommercei.R
 import com.example.ecommercei.data.User
 import com.example.ecommercei.databinding.FragmentRegisterBinding
@@ -50,6 +51,9 @@ class RegisterFragment: Fragment() {
                   )
                   val password = edPasswordRegister.text.toString()
                   viewModel.createAccountWithEmailAndPassword(user,password)
+            }
+            tvDoYouHaveAccount.setOnClickListener {
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }
         lifecycleScope.launch {

@@ -54,7 +54,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/quality"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonRegisterAccountOptions"
             android:layout_width="@dimen/mediumButtonWidth"
             android:layout_height="@dimen/mediumButtonHeight"
@@ -63,9 +63,10 @@
             app:layout_constraintStart_toStartOf="@id/tvQualityForShopping"
             app:layout_constraintEnd_toEndOf="@id/tvQualityForShopping"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:spinning_bar_color="@color/white"
             android:text="@string/register"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonLoginAccountOptions"
             android:layout_width="@dimen/mediumButtonWidth"
             android:layout_height="@dimen/mediumButtonHeight"
@@ -74,6 +75,7 @@
             app:layout_constraintStart_toStartOf="@id/tvQualityForShopping"
             app:layout_constraintEnd_toEndOf="@id/tvQualityForShopping"
             android:layout_marginTop="10dp"
+            app:spinning_bar_color="@color/black"
             android:text="@string/login"/>
 
 
