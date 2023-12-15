@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">ECommerceI</string>
     <string name="rightAddress">The Right Address &#10;For Shopping &#10;Anyday</string>
-    <string name="quality">its a new very easy to reach the&#10;best quality among the&#09;products on the internet</string>
+    <string name="quality">its a new very easy to reach the&#10;best quality among the&#09;products in Manshat Soultan</string>
     <string name="start">Start</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
