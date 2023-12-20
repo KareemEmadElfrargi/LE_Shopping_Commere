@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -89,29 +90,36 @@ class MainCategoryFragment: Fragment() {
             viewModel.bestProduct.collect {
                 when(it){
                     is Resource.Loading -> {
-                        showLoading()
+                        binding.bestProductProgressBar.visibility = View.VISIBLE
                     }
                     is Resource.Error -> {
-                        hideLoading()
-                        Log.e(TAG,it.message.toString())
+                        binding.bestProductProgressBar.visibility = View.GONE
                     }
                     is Resource.Success -> {
                         Log.i(TAG,it.data.toString())
                         bestProductAdapter.differ.submitList(it.data)
-                        hideLoading()
+                        binding.bestProductProgressBar.visibility = View.GONE
                     }
                     is Resource.Unspecified -> Unit
                 }
             }
         }
 
+        // When the user scrolls, it checks if the bottom of the content , presumably to load more data as the user scrolls.
+        binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ view,_,scrollY,_,_ ->
 
+            val canScrollHorizontally = view.canScrollHorizontally(1) || view.canScrollHorizontally(-1)
+            val canScrollVertically = view.canScrollVertically(1) || view.canScrollVertically(-1)
 
-
+            if (canScrollHorizontally || canScrollVertically) {
+                // view: This represents the NestedScrollView instance on which the scroll change listener is set
+                if (view.getChildAt(0).bottom <= view.height + scrollY) {
+                    viewModel.fetchBestProduct()
+                }
+            }
+        })
 
     }
-
-
     private fun hideLoading() {
         binding.mainCategoryProgressBar.visibility = View.GONE
     }

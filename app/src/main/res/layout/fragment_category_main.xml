@@ -7,6 +7,7 @@
 
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollMainCategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -27,11 +28,13 @@
                 android:id="@+id/recycleViewSpecialProducts"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/special_rv_item"
                 app:layout_constraintTop_toTopOf="parent"/>
             <TextView
                 android:id="@+id/tvBestDeals"
@@ -48,11 +51,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleViewBestDealsProducts"
                 android:layout_width="0dp"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="@+id/recycleViewSpecialProducts"
                 app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/best_deals_rv_item"
                 app:layout_constraintTop_toBottomOf="@+id/tvBestDeals" />
             <TextView
                 android:id="@+id/tvBestProducts"
@@ -68,7 +73,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleViewBestProducts"
                 android:layout_width="0dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp"
@@ -76,8 +81,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvBestProducts"
                 android:layout_marginEnd="15dp"
+                app:spanCount="2"
+                tools:listitem="@layout/product_rv_item"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:overScrollMode="never" />
+
+            <ProgressBar
+                android:id="@+id/bestProductProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="@dimen/_8sdp"
+                android:indeterminateTint="@color/g_gray700"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

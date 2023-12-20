@@ -1,6 +1,5 @@
 package com.example.ecommercei.viewModel
 
-import android.content.res.Resources
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainCategoryViewModel @Inject constructor(
-    val firestore: FirebaseFirestore
+    private val firestore: FirebaseFirestore
 )
     :ViewModel() {
 
@@ -27,6 +26,7 @@ class MainCategoryViewModel @Inject constructor(
 
     private val _bestProduct = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
     val bestProduct: StateFlow<Resource<List<Product>>> = _bestProduct
+    private var pagingInfo = PagingInfoBestProducts()
 
     init {
         fetchSpecialProduct()
@@ -71,21 +71,35 @@ class MainCategoryViewModel @Inject constructor(
 
     }
 
-    private fun fetchBestProduct(){
-        viewModelScope.launch {
-            _bestProduct.emit(Resource.Loading())
-        }
-        firestore.collection("Products").get()
-            .addOnSuccessListener { result ->
-                val bestProductList = result.toObjects(Product::class.java)
-                viewModelScope.launch {
-                    _bestProduct.emit(Resource.Success(bestProductList))
-                }
-            }.addOnFailureListener {
-                viewModelScope.launch {
-                    _bestProduct.emit(Resource.Error(it.message.toString()))
-                }
-            }
+     fun fetchBestProduct() {
+         // if isPagingEnd is true nothing to change
+         if (!pagingInfo.isPagingEnd) {
+             viewModelScope.launch {
+                 _bestProduct.emit(Resource.Loading())
+             }
+             firestore.collection("Products").limit(pagingInfo.bestProductPage * 10).get()
+                 .addOnSuccessListener { result ->
+                     val bestProductList = result.toObjects(Product::class.java)
+                     // true, indicating that there are no more new items to fetch
+                     pagingInfo.isPagingEnd = (bestProductList == pagingInfo.oldBestProducts)
+                     pagingInfo.oldBestProducts = bestProductList
 
-    }
+                     viewModelScope.launch {
+                         _bestProduct.emit(Resource.Success(bestProductList))
+                     }
+
+                     pagingInfo.bestProductPage++
+                 }.addOnFailureListener {
+                     viewModelScope.launch {
+                         _bestProduct.emit(Resource.Error(it.message.toString()))
+                     }
+                 }
+         }
+     }
 }
+
+internal data class PagingInfoBestProducts(
+    var bestProductPage :Long = 1,
+    var oldBestProducts : List<Product> = emptyList(),
+    var isPagingEnd : Boolean = false
+)

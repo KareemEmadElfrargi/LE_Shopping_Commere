@@ -5,17 +5,17 @@
     android:layout_height="wrap_content"
     android:background="@color/g_card_background"
     app:elevation="0dp"
-
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_8sdp">
 
         <ImageView
             android:id="@+id/img_product"
             android:layout_width="114dp"
-            android:layout_height="108dp"
+            android:layout_height="114dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -38,7 +38,8 @@
                 android:fontFamily="@font/poppins_light"
                 android:text="Chair"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="18sp"
+                android:textAlignment="center"
                 android:textStyle="bold"
                 android:layout_weight="1"/>
 
@@ -63,7 +64,7 @@
             android:fontFamily="@font/sf_pro_display"
             android:text="$1600"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_price"
             app:layout_constraintTop_toBottomOf="@id/linear_product_name"
@@ -78,7 +79,7 @@
             android:fontFamily="@font/sf_pro_display"
             android:text="$1600"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/img_product"
             app:layout_constraintTop_toBottomOf="@id/linear_product_name" />
