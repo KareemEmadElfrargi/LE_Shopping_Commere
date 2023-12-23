@@ -4,6 +4,8 @@ plugins {
     id ("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
     id("com.google.gms.google-services")
+    id ("kotlin-parcelize")
+    id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -70,6 +72,7 @@ dependencies {
 
     //Android Ktx
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.0")
     //loading button
     implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
 
@@ -88,5 +91,9 @@ dependencies {
     //Scalable DP
     implementation ("com.intuit.sdp:sdp-android:1.1.0")
 
+//    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.5.0")
+//    implementation ("org.jetbrains.kotlin:kotlin-reflect:1.5.0")
+//    implementation ("androidx.core:core-ktx:1.6.0")
+//    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 
 }

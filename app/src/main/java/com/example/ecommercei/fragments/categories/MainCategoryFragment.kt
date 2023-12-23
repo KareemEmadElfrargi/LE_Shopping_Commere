@@ -9,6 +9,8 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.ecommercei.R
 import com.example.ecommercei.adapters.BestDealsAdapter
 import com.example.ecommercei.adapters.BestProductAdapter
 import com.example.ecommercei.adapters.HomeViewPagerAdapter
@@ -43,6 +45,26 @@ class MainCategoryFragment: Fragment() {
         setupSpecialProductRecycleView()
         setupBestDealsRecycleView()
         setupBestProductsRecycleView()
+
+        specialProductAdapter.onClick = { product ->
+            val bundle = Bundle().apply {
+                putParcelable("product",product)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+        }
+
+        bestDealsAdapter.onClick = { product ->
+            val bundle = Bundle().apply {
+                putParcelable("product",product)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+        }
+        bestProductAdapter.onClick = { product ->
+            val bundle = Bundle().apply {
+                putParcelable("product",product)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+        }
 
 
 
