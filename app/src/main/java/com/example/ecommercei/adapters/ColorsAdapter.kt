@@ -57,5 +57,5 @@ class ColorsAdapter: RecyclerView.Adapter<ColorsAdapter.ColorsViewHolder>() {
             onItemClick?.invoke(color)
         }
     }
-    val onItemClick : ((Int)-> Unit )? = null
+    var onItemClick : ((Int)-> Unit )? = null
 }

@@ -55,5 +55,5 @@ class SizesAdapter : RecyclerView.Adapter<SizesAdapter.SizesViewHolder>() {
             onItemClick?.invoke(size)
         }
     }
-    val onItemClick : ((String)-> Unit )? = null
+    var onItemClick : ((String)-> Unit )? = null
 }

@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercei.R
 import com.example.ecommercei.adapters.BestProductAdapter
 import com.example.ecommercei.databinding.FragmentCategoryBaseBinding
+import com.example.ecommercei.utils.showButtonNavigationView
 
 open class BaseCategoryFragment(): Fragment() {
     private lateinit var binding : FragmentCategoryBaseBinding
@@ -29,6 +31,22 @@ open class BaseCategoryFragment(): Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpOfferRecycleView()
         setUpBestProductRecycleView()
+
+
+        bestProductAdapter.onClick = { product ->
+            val bundle = Bundle().apply {
+                putParcelable("product",product)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+        }
+
+        offerAdapter.onClick = { product ->
+            val bundle = Bundle().apply {
+                putParcelable("product",product)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+        }
+
 
         binding.recycleViewOffer.addOnScrollListener(object:RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -79,5 +97,10 @@ open class BaseCategoryFragment(): Fragment() {
 
     private fun setUpOfferRecycleView() {
         binding.recycleViewOffer.adapter = offerAdapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showButtonNavigationView()
     }
 }

@@ -17,6 +17,7 @@ import com.example.ecommercei.adapters.HomeViewPagerAdapter
 import com.example.ecommercei.adapters.SpecialProductsAdapter
 import com.example.ecommercei.databinding.FragmentCategoryMainBinding
 import com.example.ecommercei.utils.Resource
+import com.example.ecommercei.utils.showButtonNavigationView
 import com.example.ecommercei.viewModel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -65,8 +66,6 @@ class MainCategoryFragment: Fragment() {
             }
             findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
         }
-
-
 
         lifecycleScope.launch {
             viewModel.specialProduct.collect {
@@ -160,6 +159,11 @@ class MainCategoryFragment: Fragment() {
     private fun setupBestDealsRecycleView() {
         bestDealsAdapter = BestDealsAdapter()
         binding.recycleViewBestDealsProducts.adapter = bestDealsAdapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showButtonNavigationView()
     }
 
 }
