@@ -1,6 +1,5 @@
 package com.example.ecommercei.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommercei.data.CartProduct
@@ -13,7 +12,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.log
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
@@ -78,5 +76,4 @@ class DetailsViewModel @Inject constructor(
             }
         }
     }
-
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ecommercei.data.Product
 import com.example.ecommercei.databinding.ProductRvItemBinding
+import com.example.ecommercei.helper.getProductPrice
 
 class BestProductAdapter:RecyclerView.Adapter<BestProductAdapter.BestProductsViewHolder>() {
 
@@ -19,8 +20,7 @@ class BestProductAdapter:RecyclerView.Adapter<BestProductAdapter.BestProductsVie
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imgProduct)
                 product.offerPercentage?.let { offerPercentage ->
-                    val remainingPricePercentage = 100f - offerPercentage
-                    val priceAfterOffer = (remainingPricePercentage/100) * product.price
+                    val priceAfterOffer = product.offerPercentage.getProductPrice(product.price)
                     tvNewPrice.text = "$ ${String.format("%.2f",priceAfterOffer)}"
                     tvPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG // add line middle of Text
                 }

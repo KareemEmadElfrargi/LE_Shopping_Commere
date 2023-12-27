@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.ecommercei.R
-import com.example.ecommercei.activitys.ShoppingActivity
 import com.example.ecommercei.adapters.ColorsAdapter
 import com.example.ecommercei.adapters.SizesAdapter
 import com.example.ecommercei.adapters.ViewPager2ImagesAdapter
@@ -20,7 +19,6 @@ import com.example.ecommercei.databinding.FragmentDetailsProductsBinding
 import com.example.ecommercei.utils.Resource
 import com.example.ecommercei.utils.hideButtonNavigationView
 import com.example.ecommercei.viewModel.DetailsViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -96,7 +94,6 @@ class ProductDetailsFragment:Fragment() {
             tvProductName.text = product.name
             tvProductPrice.text = "$ ${product.price}"
             tvProductDescription.text = product.description
-
 
             if (product.colors.isNullOrEmpty()){
                 tvProductColors.visibility = View.GONE
