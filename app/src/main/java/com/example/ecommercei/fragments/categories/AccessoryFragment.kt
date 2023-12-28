@@ -14,8 +14,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 @AndroidEntryPoint
-class AccessoryFragment:BaseCategoryFragment() {
+class AccessoryFragment : BaseCategoryFragment() {
     @Inject
     lateinit var firestore: FirebaseFirestore
     val viewModel by viewModels<CategoryViewModel> {

@@ -13,10 +13,10 @@ import com.example.ecommercei.adapters.BestProductAdapter
 import com.example.ecommercei.databinding.FragmentCategoryBaseBinding
 import com.example.ecommercei.utils.showButtonNavigationView
 
-open class BaseCategoryFragment(): Fragment() {
-    private lateinit var binding : FragmentCategoryBaseBinding
-    protected  val offerAdapter : BestProductAdapter by lazy { BestProductAdapter() }
-    protected val bestProductAdapter : BestProductAdapter by lazy { BestProductAdapter() }
+open class BaseCategoryFragment() : Fragment() {
+    private lateinit var binding: FragmentCategoryBaseBinding
+    protected val offerAdapter: BestProductAdapter by lazy { BestProductAdapter() }
+    protected val bestProductAdapter: BestProductAdapter by lazy { BestProductAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,31 +35,32 @@ open class BaseCategoryFragment(): Fragment() {
 
         bestProductAdapter.onClick = { product ->
             val bundle = Bundle().apply {
-                putParcelable("product",product)
+                putParcelable("product", product)
             }
-            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, bundle)
         }
 
         offerAdapter.onClick = { product ->
             val bundle = Bundle().apply {
-                putParcelable("product",product)
+                putParcelable("product", product)
             }
-            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, bundle)
         }
 
 
-        binding.recycleViewOffer.addOnScrollListener(object:RecyclerView.OnScrollListener(){
+        binding.recycleViewOffer.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                if (!recyclerView.canScrollHorizontally(1) && dx !=0){
+                if (!recyclerView.canScrollHorizontally(1) && dx != 0) {
                     onOfferPagingRequest()
                 }
             }
         })
 
-        binding.nestedScrollBaseCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ view, _, scrollY, _, _ ->
+        binding.nestedScrollBaseCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { view, _, scrollY, _, _ ->
 
-            val canScrollHorizontally = view.canScrollHorizontally(1) || view.canScrollHorizontally(-1)
+            val canScrollHorizontally =
+                view.canScrollHorizontally(1) || view.canScrollHorizontally(-1)
             val canScrollVertically = view.canScrollVertically(1) || view.canScrollVertically(-1)
 
             if (canScrollHorizontally || canScrollVertically) {
@@ -72,22 +73,27 @@ open class BaseCategoryFragment(): Fragment() {
 
     }
 
-    fun showOfferLoading(){
+    fun showOfferLoading() {
 
     }
-    fun hideOfferLoading(){
+
+    fun hideOfferLoading() {
 
     }
-    fun showBestProductLoading(){
+
+    fun showBestProductLoading() {
 
     }
-    fun hideBestProductLoading(){
+
+    fun hideBestProductLoading() {
 
     }
-    open fun onOfferPagingRequest(){
+
+    open fun onOfferPagingRequest() {
 
     }
-    open fun onBestProductPagingRequest(){
+
+    open fun onBestProductPagingRequest() {
 
     }
 
