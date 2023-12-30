@@ -86,15 +86,18 @@
             app:destination="@id/orderDetailFragment" />
         <argument
             android:name="order"
-            app:argType="com.example.ecommercei.data.order.Order"
-           />
-
+            app:argType="com.example.ecommercei.data.order.Order" />
     </fragment>
 
     <fragment
         android:id="@+id/orderDetailFragment"
         android:name="com.example.ecommercei.fragments.Setting.OrderDetailFragment"
         android:label="OrderDetailFragment"
-        tools:layout="@layout/fragment_order_detail"/>
+        tools:layout="@layout/fragment_order_detail">
 
+        <!-- Add the argument definition for "order" -->
+        <argument
+            android:name="order"
+            app:argType="com.example.ecommercei.data.order.Order" />
+    </fragment>
 </navigation>

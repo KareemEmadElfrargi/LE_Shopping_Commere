@@ -73,6 +73,10 @@ class AllOrdersAdapter : Adapter<AllOrdersAdapter.orderViewHolder>() {
     override fun onBindViewHolder(holder: orderViewHolder, position: Int) {
         val currentOrder = differ.currentList[position]
         holder.bind(currentOrder)
+
+        holder.itemView.setOnClickListener {
+            onClick?.invoke(currentOrder)
+        }
     }
 
 

@@ -133,7 +133,7 @@ class BillingFragment : Fragment() {
                     OrderStatus.Ordered.status,
                     totalPrice,
                     product,
-                    selectedAddress.toString()
+                    selectedAddress!!
 
                 )
                 orderViewModel.placeOrder(order)
