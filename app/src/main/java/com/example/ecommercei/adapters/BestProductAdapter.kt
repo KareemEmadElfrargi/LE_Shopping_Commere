@@ -47,7 +47,7 @@ class BestProductAdapter:RecyclerView.Adapter<BestProductAdapter.BestProductsVie
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BestProductsViewHolder {
         val inflate = LayoutInflater.from(parent.context)
         return BestProductsViewHolder(
-            ProductRvItemBinding.inflate(inflate)
+            ProductRvItemBinding.inflate(inflate,parent,false)
         )
     }
     override fun getItemCount(): Int = differ.currentList.size

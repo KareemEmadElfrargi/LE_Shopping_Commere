@@ -90,7 +90,6 @@ class UserAccountFragment:Fragment() {
                 }
             }
         }
-
         binding.tvUpdatePassword.setOnClickListener {
             setupButtonSheetDialog {
 

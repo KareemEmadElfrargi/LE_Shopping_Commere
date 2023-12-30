@@ -59,7 +59,7 @@ class BillingProductAdapter :
         ): BillingProductViewHolder {
             return BillingProductViewHolder(
                 BillingProductsRvItemBinding.inflate(
-                    LayoutInflater.from(parent.context)
+                    LayoutInflater.from(parent.context),parent,false
                 )
             )
         }
